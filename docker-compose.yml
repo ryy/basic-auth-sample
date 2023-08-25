@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  nginx-proxy:
+    image: quay.io/dtan4/nginx-basic-auth-proxy
+    ports:
+      - 8080:80
+    environment:
+      BASIC_AUTH_USERNAME: test
+      BASIC_AUTH_PASSWORD: test
+      PROXY_PASS: http://apache/
+      SERVER_NAME: proxy.internal
+    networks:
+      - container-link
+  apache:
+    image: httpd
+    networks:
+      - container-link
+    volumes:
+      - ./index.html:/usr/local/apache2/htdocs/index.html
+networks:
+  container-link:
+    name: docker.internal

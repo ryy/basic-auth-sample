@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginForm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container label,
+        .login-container input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .login-container button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm">
+            <label for="username">ID:</label>
+            <input type="text" id="username" name="username">
+
+            <label for="password">PW:</label>
+            <input type="password" id="password" name="password">
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const id = document.getElementById("username").value;
+            const pw = document.getElementById("password").value;
+            alert(`ID: ${id}\nPW: ${pw}`);
+        });
+    </script>
+</body>
+</html>
